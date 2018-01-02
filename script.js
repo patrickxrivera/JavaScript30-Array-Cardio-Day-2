@@ -31,11 +31,26 @@ console.log(everyPersonIsAtLeast19(people))
 // Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
+
+function isTargetID(comment, targetID) {
+  return comment.id === targetID;
+}
+
 const getCommentWithID = (comments) => {
-  return comments.find(comment => comment.id === 823423);
+  return comments.find(comment => isTargetID(comment, 823423));
 }
 console.log(getCommentWithID(comments));
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
 // delete the comment with the ID of 823423
+const deleteCommentWithId = (comments, targetID) => {
+  // get index((
+  // splice at index
+  // return comments
+  let targetIndex = comments.findIndex(comment => isTargetID(comment, 823423));
+  let targetComment = comments.splice(targetIndex, 1);
+  return comments;
+}
+deleteCommentWithId(comments);
+console.log(comments)
