@@ -17,29 +17,29 @@ const comments = [
 
 // Some and Every Checks
 // Array.prototype.some() // is at least one person 19 or older?
-const onePersonIsAtLeast19 = (people) => {
-  return people.some(person => 2017 - person.year >= 19);
-}
-console.log(onePersonIsAtLeast19(people));
+// const onePersonIsAtLeast19 = (people) => {
+//   return people.some(person => 2017 - person.year >= 19);
+// }
+// console.log(onePersonIsAtLeast19(people));
+const currentYear = (new Date()).getFullYear();
+
+const isAdult = people.some(person => currentYear - person.year >= 19)
+console.log(isAdult);
 
 // Array.prototype.every() // is everyone 19 or older?
-const everyPersonIsAtLeast19 = (people) => {
-  return people.every(person => 2017 - person.year >= 19);
-}
-console.log(everyPersonIsAtLeast19(people))
+const everyPersonIsAtLeast19 = people.every(person => currentYear - person.year >= 19)
+console.log(everyPersonIsAtLeast19)
 
 // Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
 
-function isTargetID(comment, targetID) {
+const isTargetID = (comment, targetID) => {
   return comment.id === targetID;
 }
 
-const getCommentWithID = (comments) => {
-  return comments.find(comment => isTargetID(comment, 823423));
-}
-console.log(getCommentWithID(comments));
+const getCommentWithID = comments.find(comment => isTargetID(comment, 823423));
+console.log(getCommentWithID);
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
@@ -50,6 +50,12 @@ const deleteCommentWithId = (comments, targetID) => {
   // return comments
   let targetIndex = comments.findIndex(comment => isTargetID(comment, 823423));
   let targetComment = comments.splice(targetIndex, 1);
+
+  // alternative implementation for deleting comment:
+  // let newComments = [
+  //   ...comments.slice(0, index),
+  //   ...comments.slice(index + 1)
+  // ]
   return comments;
 }
 deleteCommentWithId(comments);
