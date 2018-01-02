@@ -23,10 +23,18 @@ const onePersonIsAtLeast19 = (people) => {
 console.log(onePersonIsAtLeast19(people));
 
 // Array.prototype.every() // is everyone 19 or older?
+const everyPersonIsAtLeast19 = (people) => {
+  return people.every(person => 2017 - person.year >= 19);
+}
+console.log(everyPersonIsAtLeast19(people))
 
 // Array.prototype.find()
 // Find is like filter, but instead returns just the one you are looking for
 // find the comment with the ID of 823423
+const getCommentWithID = (comments) => {
+  return comments.find(comment => comment.id === 823423);
+}
+console.log(getCommentWithID(comments));
 
 // Array.prototype.findIndex()
 // Find the comment with this ID
